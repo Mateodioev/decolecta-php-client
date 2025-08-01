@@ -49,7 +49,8 @@ class Client
             ],
         ]);
 
-        return json_decode($response->getBody()->getContents(), true);
+        $content = $response->getBody()->getContents();
+        return json_decode($content, true);
     }
 
     /**
