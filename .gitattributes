@@ -7,3 +7,4 @@ hooks/ export-ignore
 .editorconfig export-ignore
 phpunit.xml export-ignore
 .vscode/ export-ignore
+CLAUDE.md export-ignore
