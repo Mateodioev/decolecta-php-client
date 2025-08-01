@@ -2,12 +2,10 @@
 
 namespace DecolectaApi\Services;
 
-use DecolectaApi\Client\Client;
-
 class Reniec extends AbstractService
 {
     /**
-     * Extraer información de personas 
+     * Extraer información de personas
      * @param int|string $numero
      * @return array
      * @see https://decolecta.gitbook.io/docs/servicios/integrations-2#dni-consulta-de-datos-personales

@@ -4,6 +4,8 @@ namespace DecolectaApi\Services;
 
 use DateTime;
 
+use function array_filter;
+
 class Sunat extends AbstractService
 {
     /**
@@ -42,7 +44,7 @@ class Sunat extends AbstractService
      */
     public function tipoCambio(?DateTime $fecha = null, ?int $month = null, ?int $year = null): array
     {
-        $params = \array_filter([
+        $params = array_filter([
             'date'  => $fecha?->format('Y-m-d'),
             'month' => $month,
             'year'  => $year,

@@ -4,13 +4,15 @@ namespace DecolectaApi\Services;
 
 use DateTime;
 
+use function array_filter;
+
 /**
  * Consultar información de superintendencia de banca y seguro
  */
 class Sbs extends AbstractService
 {
     /**
-     * Extraer tipo de cambio PROMEDIO de las monedas publicadas filtrando por fecha o mensual, 
+     * Extraer tipo de cambio PROMEDIO de las monedas publicadas filtrando por fecha o mensual,
      * @param string $currency Codigo de la moneda
      * @param ?DateTime $date Filtro por fecha
      * @param ?int $month Acepta del 1 al 12 correspondiente a un mes
@@ -20,7 +22,7 @@ class Sbs extends AbstractService
      */
     public function cambioPromedio(string $currency = 'USD', ?DateTime $date = null, ?int $month = null, ?int $year = null): array
     {
-        $params = \array_filter([
+        $params = array_filter([
             'currency' => $currency,
             'date'     => $date?->format('Y-m-d'),
             'month'    => $month,

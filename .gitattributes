@@ -2,9 +2,9 @@ tests/ export-ignore
 examples/ export-ignore
 tools/ export-ignore
 hooks/ export-ignore
+.vscode/ export-ignore
 
 .php-cs-fixer.dist.php export-ignore
 .editorconfig export-ignore
 phpunit.xml export-ignore
-.vscode/ export-ignore
 CLAUDE.md export-ignore

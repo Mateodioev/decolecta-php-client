@@ -2,9 +2,7 @@
 
 namespace DecolectaApi\Client;
 
-use DecolectaApi\Services\Reniec;
-use DecolectaApi\Services\Sbs;
-use DecolectaApi\Services\Sunat;
+use DecolectaApi\Services\{Reniec, Sbs, Sunat};
 
 class Client
 {
@@ -12,8 +10,7 @@ class Client
 
     public function __construct(
         public Config $config,
-    )
-    {
+    ) {
     }
 
     public function reniec()

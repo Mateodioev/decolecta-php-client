@@ -18,8 +18,7 @@ class Factory
     public static function withHttpClient(
         string $apiKey,
         \Psr\Http\Client\ClientInterface $httpClient
-    ): Client
-    {
+    ): Client {
         return self::withConfig(
             Config::new()->withApiKey($apiKey)
                 ->withHttpClient($httpClient)
