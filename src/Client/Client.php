@@ -2,15 +2,14 @@
 
 namespace DecolectaApi\Client;
 
-use DecolectaApi\Services\{Reniec, Sbs, Sunat};
+use DecolectaApi\Services\{Afp, Reniec, Sbs, Sunat};
 
 class Client
 {
-    public const string URL_BASE = 'https://api.decolecta.com';
+    public const string URL_BASE = "https://api.decolecta.com";
 
-    public function __construct(
-        public Config $config,
-    ) {
+    public function __construct(public Config $config)
+    {
     }
 
     public function reniec()
@@ -28,21 +27,26 @@ class Client
         return new Sunat($this);
     }
 
+    public function afp()
+    {
+        return new Afp($this);
+    }
+
     /**
      * @internal
      */
     public function call(string $method, string $path, array $params): array
     {
-        $url   = $this->endpoint($path, $params);
+        $url = $this->endpoint($path, $params);
         $token = $this->config->apiKey;
 
         $response = $this->config->httpClient->request($method, $url, [
-            'http_errors'     => false,
-            'connect_timeout' => $this->config->timeout,
-            'headers'         => [
-                'Authorization' => "Bearer $token",
-                'User-Agent'    => 'mateodioev/decolecta-api-php',
-                'Accept'        => 'application/json',
+            "http_errors" => false,
+            "connect_timeout" => $this->config->timeout,
+            "headers" => [
+                "Authorization" => "Bearer $token",
+                "User-Agent" => "mateodioev/decolecta-api-php",
+                "Accept" => "application/json",
             ],
         ]);
 
@@ -55,10 +59,10 @@ class Client
      */
     private function endpoint(string $path, array $params = []): string
     {
-        $url = self::URL_BASE . '/' . $path;
+        $url = self::URL_BASE . "/" . $path;
 
         if (!empty($params)) {
-            $url .= '?' . http_build_query($params);
+            $url .= "?" . http_build_query($params);
         }
         return $url;
     }
