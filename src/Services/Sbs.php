@@ -20,16 +20,24 @@ class Sbs extends AbstractService
      * @return array
      * @see https://decolecta.gitbook.io/docs/servicios/integrations-1#tipo-de-cambio-promedio
      */
-    public function cambioPromedio(string $currency = 'USD', ?DateTime $date = null, ?int $month = null, ?int $year = null): array
-    {
+    public function cambioPromedio(
+        string $currency = "USD",
+        ?DateTime $date = null,
+        ?int $month = null,
+        ?int $year = null,
+    ): array {
         $params = array_filter([
-            'currency' => $currency,
-            'date'     => $date?->format('Y-m-d'),
-            'month'    => $month,
-            'year'     => $year,
+            "currency" => $currency,
+            "date" => $date?->format("Y-m-d"),
+            "month" => $month,
+            "year" => $year,
         ]);
 
-        return $this->client->call('GET', '/v1/tipo-cambio/sbs/average', $params);
+        return $this->client->call(
+            "GET",
+            "/v1/tipo-cambio/sbs/average",
+            $params,
+        );
     }
 
     /**
@@ -37,8 +45,17 @@ class Sbs extends AbstractService
      * @return array
      * @see https://decolecta.gitbook.io/docs/servicios/integrations-1#tipo-de-cambio-contable
      */
-    public function cambioContable(): array
-    {
-        return $this->client->call('GET', '/v1/tipo-cambio/sbs/contable', []);
+    public function cambioContable(
+        string $currency = "USD",
+        ?DateTime $date = null,
+    ): array {
+        return $this->client->call(
+            "GET",
+            "/v1/tipo-cambio/sbs/accounting",
+            array_filter([
+                "currency" => $currency,
+                "date" => $date?->format("Y-m-d"),
+            ]),
+        );
     }
 }
